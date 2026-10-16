@@ -1,0 +1,16 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "installCommand": "pip install -r requirements.txt && PLAYWRIGHT_BROWSERS_PATH=.playwright-browsers python -m playwright install chromium --only-shell",
+  "functions": {
+    "index.py": {
+      "maxDuration": 60,
+      "includeFiles": ".playwright-browsers/**"
+    }
+  },
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/index.py"
+    }
+  ]
+}
